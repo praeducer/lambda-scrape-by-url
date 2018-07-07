@@ -1,0 +1,6 @@
+web_scraper>=0.0.1
+newspaper3k>=0.2.6
+confluent-kafka==0.11.0
+validators>=0.12.1
+Scrapy>=1.5.0
+requests>=2.18.4
