@@ -52,7 +52,9 @@ From the 'dist' folder run:
 ```bash
 cd lambda-scrape-by-url/dist
 chmod -R 777 ScrapeByUrl
-zip -r9 ./ScrapeByUrl.zip ./ScrapeByUrl
+cd ScrapeByUrl
+zip -r ../ScrapeByUrl.zip .
+cd ..
 chmod -R 777 ScrapeByUrl.zip
 ```
 
