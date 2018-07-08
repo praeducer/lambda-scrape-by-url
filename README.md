@@ -32,7 +32,7 @@ nosetests web_scraper/tests/test_web_scraper.py
 Test the Lambda function:
 
 ```bash
-nosetests tests/test_lambda_function.py
+nosetests ScrapeByUrl/tests/test_lambda_function.py
 ```
 
 For more robust testing, you can scrape the content from a large list of URLs with the script 'urls_to_text_files.py'. It will create a plain text file for each valid URL representing the main content from each page. It will also output a file with a list of URLs where content was not extracted successfully.
