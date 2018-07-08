@@ -56,7 +56,7 @@ Then you can copy over site-packages as described in the article.
 
 Then, instead of copying over a single file, copy everything:
 ```bash
-zip -gr ../ScrapeByUrl.zip ./
+zip -gr ../ScrapeByUrl.zip .
 ```
 
 You can then copy the zip file over to S3:
