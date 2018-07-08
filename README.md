@@ -43,25 +43,34 @@ python3 web_scraper/tests/urls_to_text_files.py ./web_scraper/tests/data/sample_
 
 ## Build for Amazon Lambda
 
-Copy all files from root to 'lambda-scrape-by-url/dist/ScrapeByUrl'.
+First follow these steps: https://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-deployment-pkg.html#with-s3-example-deployment-pkg-python
 
-Copy all files from site-packages to the same directory.
+With the addition of cloning the repo and installing all of those dependencies at once:
+```bash
+git clone https://github.com/praeducer/lambda-scrape-by-url
+cd lambda-scrape-by-url/
+./rebuild.sh
+```
 
-From the 'dist' folder run:
+Then you can copy over site-packages as described in the article.
+
+Then, instead of copying over a single file, copy everything:
+```bash
+zip -gr ../ScrapeByUrl.zip ./
+```
+
+You can then copy the zip file over to S3:
 
 ```bash
-cd lambda-scrape-by-url/dist
-chmod -R 777 ScrapeByUrl
-cd ScrapeByUrl
-zip -r ../ScrapeByUrl.zip .
-cd ..
-chmod -R 777 ScrapeByUrl.zip
+aws s3 cp ScrapeByUrl.zip s3://semantic-services
 ```
+
+You can then add the S3 link URL, https://s3.amazonaws.com/semantic-services/ScrapeByUrl.zip, to the 'Function code' section of the 'Configuration' tab using the 'Upload a file from S3' 'Code entry type' option found here: https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/ScrapeByUrl?tab=graph
 
 More info:
 
-* https://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-deployment-pkg.html#with-s3-example-deployment-pkg-python
 * https://docs.aws.amazon.com/lambda/latest/dg/lambda-python-how-to-create-deployment-package.html
+
 
 ## Troubleshooting
 
