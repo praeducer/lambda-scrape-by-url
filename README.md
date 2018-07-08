@@ -32,7 +32,7 @@ nosetests web_scraper/tests/test_web_scraper.py
 Test the Lambda function:
 
 ```bash
-nosetests ScrapeByUrl/tests/test_lambda_function.py
+nosetests tests/test_lambda_function.py
 ```
 
 For more robust testing, you can scrape the content from a large list of URLs with the script 'urls_to_text_files.py'. It will create a plain text file for each valid URL representing the main content from each page. It will also output a file with a list of URLs where content was not extracted successfully.
@@ -40,6 +40,26 @@ For more robust testing, you can scrape the content from a large list of URLs wi
 ```bash
 python3 web_scraper/tests/urls_to_text_files.py ./web_scraper/tests/data/sample_urls_to_scrape.csv ./web_scraper/tests/results
 ```
+
+## Build for Amazon Lambda
+
+Copy all files from root to 'lambda-scrape-by-url/dist/ScrapeByUrl'.
+
+Copy all files from site-packages to the same directory.
+
+From the 'dist' folder run:
+
+```bash
+cd lambda-scrape-by-url/dist
+chmod -R 777 ScrapeByUrl
+zip -r9 ./ScrapeByUrl.zip ./ScrapeByUrl
+chmod -R 777 ScrapeByUrl.zip
+```
+
+More info:
+
+* https://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-deployment-pkg.html#with-s3-example-deployment-pkg-python
+* https://docs.aws.amazon.com/lambda/latest/dg/lambda-python-how-to-create-deployment-package.html
 
 ## Troubleshooting
 
