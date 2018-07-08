@@ -1,7 +1,6 @@
 from unittest import TestCase
 from web_scraper import *
 
-
 class TestWebScraper(TestCase):
     def test_has_correct_return_type(self):
         s = scrape_by_url('http://www-03.ibm.com/press/us/en/pressrelease/53622.wss')
